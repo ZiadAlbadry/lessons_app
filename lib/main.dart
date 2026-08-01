@@ -24,7 +24,7 @@ class VerveApp extends StatelessWidget {
       darkTheme: ThemeData(
         fontFamily: 'Cairo',
         colorScheme: ColorScheme.fromSeed(
-          seedColor: Color.fromARGB(255, 8, 8, 9),
+          seedColor: Color.fromARGB(255, 8, 9, 9),
           brightness: Brightness.dark,
         ),
         brightness: Brightness.dark,
