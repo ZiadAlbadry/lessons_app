@@ -1,0 +1,47 @@
+name: lessons_app
+description: "Lessons for cere."
+publish_to: "none"
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.12.0
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.8
+  lottie: ^3.5.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^6.0.0
+
+flutter:
+  uses-material-design: true
+  
+  assets:
+    - assets/main.png
+    - animation\Alphabet A.json
+  fonts:
+    - family: Cairo
+      fonts:
+        - asset: fonts/Cairo-Regular.ttf
+        - asset: fonts/Cairo-Light.ttf
+          weight: 300
+        - asset: fonts/Cairo-Medium.ttf
+          weight: 500
+        - asset: fonts/Cairo-SemiBold.ttf
+          weight: 600
+        - asset: fonts/Cairo-Bold.ttf
+          weight: 700
+        - asset: fonts/Cairo-ExtraBold.ttf
+          weight: 800
+        - asset: fonts/Cairo-ExtraLight.ttf
+          weight: 200
+        - asset: fonts/Cairo-Black.ttf
+          weight: 900
+
+  
