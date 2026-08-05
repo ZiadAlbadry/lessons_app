@@ -49,9 +49,9 @@ class RegisterPage extends StatelessWidget {
                 SizedBox(width: 10),
                 Expanded(
                   child: Text(
-                    "This is the Important thing sThis is the Important thing sThis is the Important thing s",
+                    "This is the Important thing sThis is ",
                     style: TextStyle(fontSize: 16),
-                    maxLines: 2,
+                    maxLines: 1,
                   ),
                 ),
               ],
