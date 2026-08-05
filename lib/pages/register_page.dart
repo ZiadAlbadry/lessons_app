@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lessons_app/pages/home_page.dart';
 
 class RegisterPage extends StatelessWidget {
   const RegisterPage({super.key});
@@ -58,24 +59,36 @@ class RegisterPage extends StatelessWidget {
             ),
 
             Container(
-              padding: EdgeInsets.symmetric(vertical: 12),
+              padding: const EdgeInsets.symmetric(vertical: 12),
               width: double.infinity,
               alignment: Alignment.center,
               decoration: BoxDecoration(
-                color: Color.fromARGB(95, 181, 211, 8),
+                color: const Color.fromARGB(95, 181, 211, 8),
                 borderRadius: BorderRadius.circular(20),
               ),
-              child: Text(
-                "Sign In",
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return HomePage();
+                      },
+                    ),
+                  );
+                },
+                child: const Text(
+                  "Sign In",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
             ),
 
-            Spacer(),
+            const Spacer(),
             Wrap(
               alignment: WrapAlignment.center,
               spacing: 5,
