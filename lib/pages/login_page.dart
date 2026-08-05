@@ -128,9 +128,17 @@ class LoginPage extends StatelessWidget {
                 borderRadius: BorderRadius.circular(20),
                 border: Border.all(color: Colors.black),
               ),
-              child: Text(
-                "Register",
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              child: GestureDetector(
+                onTap: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context){
+                      return RegisterPage();
+                    }));
+                  
+                },
+                child: Text(
+                  "Register",
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                ),
               ),
             ),
             Spacer(),
