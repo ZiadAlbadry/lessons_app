@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lessons_app/pages/home_page.dart';
 import 'package:lessons_app/pages/register_page.dart';
 
 class LoginPage extends StatelessWidget {
@@ -7,6 +8,7 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      
       appBar: AppBar(),
       body: Padding(
         padding: const EdgeInsets.all(30),
@@ -42,11 +44,11 @@ class LoginPage extends StatelessWidget {
 
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.all(Radius.circular(5)),
-                border: Border.all(color: Colors.black38),
+                border: Border.all(color: Color.fromARGB(95, 181, 211, 8)),
               ),
               child: Text(
                 "Email",
-                style: TextStyle(fontSize: 20, color: Colors.black38),
+                style: TextStyle(fontSize: 20, color: const Color.fromARGB(255, 206, 201, 201)),
               ),
             ),
             SizedBox(height: 20),
@@ -55,14 +57,14 @@ class LoginPage extends StatelessWidget {
 
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.all(Radius.circular(5)),
-                border: Border.all(color: Colors.black38),
+                border: Border.all(color: const Color.fromARGB(95, 181, 211, 8)),
               ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
                     "Password",
-                    style: TextStyle(fontSize: 20, color: Colors.black38),
+                    style: TextStyle(fontSize: 20, color: const Color.fromARGB(255, 235, 231, 231)),
                   ),
 
                   Icon(Icons.visibility),
@@ -78,7 +80,7 @@ class LoginPage extends StatelessWidget {
                   height: 25,
                   width: 25,
                   decoration: BoxDecoration(
-                    border: Border.all(color: Colors.black, width: 2),
+                    border: Border.all(color: Color.fromARGB(95, 232, 232, 226), width: 2),
                   ),
                 ),
                 SizedBox(width: 10),
@@ -97,15 +99,25 @@ class LoginPage extends StatelessWidget {
               width: double.infinity,
               alignment: Alignment.center,
               decoration: BoxDecoration(
-                color: Colors.black,
+                color: Color.fromARGB(95, 181, 211, 8),
                 borderRadius: BorderRadius.circular(20),
               ),
-              child: Text(
-                "Sign In",
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) {
+                      return HomePage();
+                    }),
+                  );
+                },
+                child: Text(
+                  "Sign In",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
             ),
@@ -126,7 +138,7 @@ class LoginPage extends StatelessWidget {
               alignment: Alignment.center,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20),
-                border: Border.all(color: Colors.black),
+                border: Border.all(color: Color.fromARGB(95, 181, 211, 8)),
               ),
               child: GestureDetector(
                 onTap: () {
@@ -145,13 +157,14 @@ class LoginPage extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.end,
-              spacing: 10,
               children: [
                 Text(
                   "Terms of use",
                   style: TextStyle(fontSize: 16, color: Colors.blue),
                 ),
+                SizedBox(width: 10),
                 Text("&", style: TextStyle(fontSize: 16, color: Colors.black)),
+                SizedBox(width: 10),
                 Text(
                   "Privacy Policy",
                   style: TextStyle(fontSize: 16, color: Colors.blue),

@@ -9,7 +9,7 @@ class RegisterPage extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.all(30),
         child: Column(
-          spacing: 20,
+          spacing: 10,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Row(
@@ -62,7 +62,7 @@ class RegisterPage extends StatelessWidget {
               width: double.infinity,
               alignment: Alignment.center,
               decoration: BoxDecoration(
-                color: Colors.grey,
+                color: Color.fromARGB(95, 181, 211, 8),
                 borderRadius: BorderRadius.circular(20),
               ),
               child: Text(
