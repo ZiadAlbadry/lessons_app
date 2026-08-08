@@ -92,7 +92,7 @@ class TestPage extends StatelessWidget {
                       barrierDismissible: true,
                       context: context,
                       builder: (context) => AlertDialog(
-                        content: Text("TEst"),
+                        content: Text("فك الديقة يارب"),
 
                         actions: [
                           ElevatedButton(
@@ -126,8 +126,8 @@ class TestPage extends StatelessWidget {
                       builder: (context) => Container(
                         height: double.infinity,
                         width: double.infinity,
-                        color: Colors.green,
-                        child: Text("data"),
+                        color: const Color.fromARGB(255, 199, 134, 215),
+                        child: Text("يارب فك الديقة "),
                       ),
                     );
                   },
