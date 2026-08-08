@@ -1,16 +1,20 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
-import 'package:lessons_app/pages/home_page.dart';
 
 class RegisterPage extends StatelessWidget {
   const RegisterPage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    log("This from Register Page");
+
     return Scaffold(
+      appBar: AppBar(backgroundColor: Colors.deepPurpleAccent),
       body: Padding(
         padding: const EdgeInsets.all(30),
         child: Column(
-          spacing: 10,
+          spacing: 20,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Row(
@@ -50,35 +54,28 @@ class RegisterPage extends StatelessWidget {
                 SizedBox(width: 10),
                 Expanded(
                   child: Text(
-                    "This is the Important thing sThis is ",
+                    "This is the Important thing sThis is the Important thing sThis is the Important thing s",
                     style: TextStyle(fontSize: 16),
-                    maxLines: 1,
+                    maxLines: 2,
                   ),
                 ),
               ],
             ),
 
-            Container(
-              padding: const EdgeInsets.symmetric(vertical: 12),
-              width: double.infinity,
-              alignment: Alignment.center,
-              decoration: BoxDecoration(
-                color: const Color.fromARGB(95, 181, 211, 8),
-                borderRadius: BorderRadius.circular(20),
-              ),
-              child: GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) {
-                        return HomePage();
-                      },
-                    ),
-                  );
-                },
-                child: const Text(
-                  "Sign In",
+            GestureDetector(
+              onTap: () {
+                Navigator.pop(context);
+              },
+              child: Container(
+                padding: EdgeInsets.symmetric(vertical: 12),
+                width: double.infinity,
+                alignment: Alignment.center,
+                decoration: BoxDecoration(
+                  color: Colors.grey,
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                child: Text(
+                  "رجوع",
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 20,
@@ -88,7 +85,7 @@ class RegisterPage extends StatelessWidget {
               ),
             ),
 
-            const Spacer(),
+            Spacer(),
             Wrap(
               alignment: WrapAlignment.center,
               spacing: 5,
