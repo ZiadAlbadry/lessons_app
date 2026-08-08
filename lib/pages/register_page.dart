@@ -85,7 +85,7 @@ class RegisterPage extends StatelessWidget {
               ),
             ),
 
-            Spacer(),
+            
             Wrap(
               alignment: WrapAlignment.center,
               spacing: 5,

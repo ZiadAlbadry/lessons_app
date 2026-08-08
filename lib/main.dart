@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:lessons_app/pages/login_page.dart';
 import 'package:lessons_app/pages/profile_page.dart';
 import 'package:lessons_app/pages/register_page.dart';
-import 'package:lessons_app/pages/test.dart';
+import 'package:lessons_app/pages/home_page.dart';
+
 
 void main(List<String> args) {
   runApp(VerveApp());
@@ -17,10 +18,11 @@ class VerveApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       initialRoute: "/",
       routes: {
-        "/": (context) => TestPage(),
-        "/login": (context) => LoginPage(),
+        "/": (context) => LoginPage(),
         "/register": (context) => RegisterPage(),
+        "/home": (context) => HomePage(),
         "/profile": (context) => ProfilePage(),
+        
       },
 
       onUnknownRoute: (settings) =>
