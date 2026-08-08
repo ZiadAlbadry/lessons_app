@@ -19,6 +19,8 @@ class VerveApp extends StatelessWidget {
       routes: {
         "/": (context) => HomePage(),
         "/login": (context) => LoginPage(),
+        "/": (context) => HomePage(),
+        
         "/register": (context) => RegisterPage(),
         "/profile": (context) => ProfilePage(),
       },
