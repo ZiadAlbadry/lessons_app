@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lessons_app/models/product.dart';
+import 'product.dart';
 import 'package:lessons_app/pages/product_page.dart';
 
 // widget مستخرج (Extracted Widget) - اتعلمناه في سيشن 7
