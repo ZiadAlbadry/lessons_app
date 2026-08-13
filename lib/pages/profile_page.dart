@@ -6,42 +6,38 @@ class ProfilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          ProfileLeading(),
-          SizedBox(height: 10),
-          ListTile(
-            onTap: () {},
-            leading: Icon(Icons.email),
-            title: Text("Email"),
-            subtitle: Text("abdallhelrabiey255@gamil.com"),
-          ),
-          ListTile(
-            onTap: () {},
-            leading: Icon(Icons.mobile_screen_share_outlined),
-            title: Text("Mobile"),
-            subtitle: Text("01006257074"),
-          ),
-          ListTile(
-            onTap: () {},
-            leading: Icon(Icons.facebook),
-            title: Text("Facebook"),
-            subtitle: Text("abdallhelrabiey255@gamil"),
-          ),
-          ListTile(
-            onTap: () {},
-            leading: Icon(Icons.beach_access),
-            title: Text("Behance"),
-            subtitle: Text("xyz.com"),
-          ),
-          ListTile(
-            onTap: () {},
-            leading: Icon(Icons.email),
-            title: Text("Email"),
-            subtitle: Text("abdallhelrabiey255@gamil.com"),
-          ),
-        ],
+      body: SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            const ProfileLeading(),
+            const SizedBox(height: 10),
+            ListTile(
+              onTap: () {},
+              leading: const Icon(Icons.email),
+              title: const Text("Email"),
+              subtitle: const Text("abdallhelrabiey255@gamil.com"),
+            ),
+            ListTile(
+              onTap: () {},
+              leading: const Icon(Icons.mobile_screen_share_outlined),
+              title: const Text("Mobile"),
+              subtitle: const Text("01006257074"),
+            ),
+            ListTile(
+              onTap: () {},
+              leading: const Icon(Icons.facebook),
+              title: const Text("Facebook"),
+              subtitle: const Text("abdallhelrabiey255@gamil"),
+            ),
+            ListTile(
+              onTap: () {},
+              leading: const Icon(Icons.beach_access),
+              title: const Text("Behance"),
+              subtitle: const Text("xyz.com"),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -53,10 +49,9 @@ class ProfileLeading extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(20),
+      padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
-        color: Colors.blue,
-        gradient: LinearGradient(
+        gradient: const LinearGradient(
           begin: Alignment.topRight,
           end: Alignment.bottomLeft,
           colors: [Colors.blueAccent, Colors.deepOrangeAccent],
@@ -69,7 +64,7 @@ class ProfileLeading extends StatelessWidget {
       child: Column(
         spacing: 20,
         children: [
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -77,17 +72,17 @@ class ProfileLeading extends StatelessWidget {
                 onTap: () {
                   Navigator.pop(context);
                 },
-                child: Icon(Icons.arrow_back, size: 25, color: Colors.white),
+                child: const Icon(Icons.arrow_back, size: 25, color: Colors.white),
               ),
-              Text(
+              const Text(
                 "Profile",
                 style: TextStyle(color: Colors.white, fontSize: 24),
               ),
-              Icon(Icons.settings, size: 25, color: Colors.white),
+              const Icon(Icons.settings, size: 25, color: Colors.white),
             ],
           ),
 
-          CircleAvatar(
+          const CircleAvatar(
             backgroundColor: Colors.white,
             radius: 50,
             child: CircleAvatar(
@@ -97,7 +92,8 @@ class ProfileLeading extends StatelessWidget {
               ),
             ),
           ),
-          Column(
+
+          const Column(
             children: [
               Text(
                 "Abdallh Mostafa",
@@ -109,29 +105,22 @@ class ProfileLeading extends StatelessWidget {
               ),
             ],
           ),
+
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: [
+            children: const [
               Text("1000", style: TextStyle(color: Colors.white, fontSize: 18)),
               SizedBox(width: 5),
-              Text(
-                "Follower",
-                style: TextStyle(color: Colors.white, fontSize: 16),
-              ),
+              Text("Follower", style: TextStyle(color: Colors.white, fontSize: 16)),
               SizedBox(width: 10),
               SizedBox(
                 height: 40,
                 child: VerticalDivider(color: Colors.white, thickness: 1.5),
               ),
-
               SizedBox(width: 10),
-
               Text("1200", style: TextStyle(color: Colors.white, fontSize: 18)),
               SizedBox(width: 5),
-              Text(
-                "Following",
-                style: TextStyle(color: Colors.white, fontSize: 16),
-              ),
+              Text("Following", style: TextStyle(color: Colors.white, fontSize: 16)),
             ],
           ),
         ],

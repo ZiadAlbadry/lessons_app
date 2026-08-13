@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:lessons_app/pages/login_page.dart';
 import 'package:lessons_app/pages/profile_page.dart';
-import 'package:lessons_app/pages/register_page.dart';
 import 'package:lessons_app/pages/home_page.dart';
-
+import 'package:lessons_app/pages/splash_page.dart';
 
 void main(List<String> args) {
-  runApp(VerveApp());
+  runApp(const VerveApp());
 }
 
 class VerveApp extends StatelessWidget {
@@ -16,22 +15,22 @@ class VerveApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: "/",
+      initialRoute: "/splash",
       routes: {
-        "/": (context) => LoginPage(),
-        "/register": (context) => RegisterPage(),
-        "/home": (context) => HomePage(),
-        "/profile": (context) => ProfilePage(),
-        
+        "/splash": (context) => const SplashPage(),
+        "/login": (context) => const LoginPage(),
+        "/home": (context) => const HomePage(),
+        "/profile": (context) => const ProfilePage(),
       },
-
       onUnknownRoute: (settings) =>
-          MaterialPageRoute(builder: (context) => NOtFound404()),
+          MaterialPageRoute(builder: (context) => const NotFound404()),
       theme: ThemeData(
+        fontFamily: 'Cairo',
         colorSchemeSeed: Colors.deepPurpleAccent,
         brightness: Brightness.light,
       ),
       darkTheme: ThemeData(
+        fontFamily: 'Cairo',
         colorSchemeSeed: Colors.deepPurpleAccent,
         brightness: Brightness.dark,
       ),
@@ -40,24 +39,31 @@ class VerveApp extends StatelessWidget {
   }
 }
 
-class NOtFound404 extends StatelessWidget {
-  const NOtFound404({super.key});
+class NotFound404 extends StatelessWidget {
+  const NotFound404({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(child: Text("Sorry 404", style: TextStyle(fontSize: 40))),
-    );
-  }
-}
-
-class ProdcutPage extends StatelessWidget {
-  const ProdcutPage({super.key, required this.id});
-  final int id;
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(child: Text("$id", style: TextStyle(fontSize: 40))),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Text("Sorry 404", style: TextStyle(fontSize: 40)),
+            const SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pushNamedAndRemoveUntil(
+                  context,
+                  "/home",
+                  (route) => false,
+                );
+              },
+              child: const Text("Go Home"),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

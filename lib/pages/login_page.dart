@@ -1,165 +1,235 @@
-
 import 'package:flutter/material.dart';
 import 'package:lessons_app/pages/register_page.dart';
 
-class LoginPage extends StatelessWidget {
+class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
+
+  @override
+  State<LoginPage> createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
+  final _formKey = GlobalKey<FormState>();
+
+  late TextEditingController emailController;
+  late TextEditingController passwordController;
+
+  bool rememberMe = false;
+  bool isPasswordVisible = false;
+
+  @override
+  void initState() {
+    super.initState();
+    emailController = TextEditingController();
+    passwordController = TextEditingController();
+  }
+
+  @override
+  void dispose() {
+    // تقفيل الـ controllers لما الصفحة تتقفل - سيشن 8
+    emailController.dispose();
+    passwordController.dispose();
+    super.dispose();
+  }
+
+  void handleSignIn() {
+    // بيتحقق من كل TextFormField جوه الـ Form
+    if (_formKey.currentState!.validate()) {
+      Navigator.pushReplacementNamed(context, "/home");
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body: Padding(
-        padding: const EdgeInsets.all(30),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
+      body: SafeArea(
+        child: SingleChildScrollView(
+          padding: const EdgeInsets.all(30),
+          child: Form(
+            key: _formKey,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Expanded(
-                  child: Text(
-                    "Verve",
-                    style: TextStyle(fontSize: 30, fontWeight: FontWeight.w600),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    const Expanded(
+                      child: Text(
+                        "Verve",
+                        style: TextStyle(
+                          fontSize: 30,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                    ),
+                    const Text(
+                      "Select Country",
+                      style: TextStyle(fontSize: 18, color: Colors.blue),
+                    ),
+                    const SizedBox(width: 20),
+                    const Icon(Icons.language_rounded, size: 30),
+                  ],
+                ),
+
+                const SizedBox(height: 20),
+                const Text("Welcome Back", style: TextStyle(fontSize: 24)),
+                const SizedBox(height: 20),
+
+                // ===== حقل الإيميل =====
+                TextFormField(
+                  controller: emailController,
+                  keyboardType: TextInputType.emailAddress,
+                  decoration: const InputDecoration(
+                    labelText: "Email",
+                    border: OutlineInputBorder(),
+                  ),
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return "من فضلك اكتب الإيميل";
+                    }
+                    if (!value.contains("@")) {
+                      return "صيغة الإيميل غلط";
+                    }
+                    return null;
+                  },
+                ),
+
+                const SizedBox(height: 16),
+
+                // ===== حقل الباسورد =====
+                TextFormField(
+                  controller: passwordController,
+                  obscureText: !isPasswordVisible,
+                  decoration: InputDecoration(
+                    labelText: "Password",
+                    border: const OutlineInputBorder(),
+                    suffixIcon: IconButton(
+                      icon: Icon(
+                        isPasswordVisible
+                            ? Icons.visibility
+                            : Icons.visibility_outlined,
+                      ),
+                      onPressed: () {
+                        setState(() {
+                          isPasswordVisible = !isPasswordVisible;
+                        });
+                      },
+                    ),
+                  ),
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return "من فضلك اكتب كلمة المرور";
+                    }
+                    if (value.length < 6) {
+                      return "كلمة المرور لازم تكون 6 حروف على الأقل";
+                    }
+                    return null;
+                  },
+                ),
+
+                const SizedBox(height: 12),
+
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Row(
+                      children: [
+                        Checkbox(
+                          value: rememberMe,
+                          onChanged: (value) {
+                            setState(() {
+                              rememberMe = value ?? false;
+                            });
+                          },
+                        ),
+                        const Text("Remember me", style: TextStyle(fontSize: 16)),
+                      ],
+                    ),
+                    const Text(
+                      "Forget password?",
+                      style: TextStyle(fontSize: 16, color: Colors.blue),
+                    ),
+                  ],
+                ),
+
+                const SizedBox(height: 20),
+
+                GestureDetector(
+                  onTap: handleSignIn,
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(vertical: 12),
+                    width: double.infinity,
+                    alignment: Alignment.center,
+                    decoration: BoxDecoration(
+                      color: Colors.black,
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: const Text(
+                      "Sign In",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
                   ),
                 ),
 
-                Text(
-                  "Select Country",
-                  style: TextStyle(fontSize: 18, color: Colors.blue),
+                const SizedBox(height: 25),
+                const Divider(),
+                const SizedBox(height: 25),
+
+                const Text(
+                  "New to Verve",
+                  style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold),
                 ),
 
-                SizedBox(width: 20),
-                Icon(Icons.language_rounded, size: 30),
+                const SizedBox(height: 20),
+
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => RegisterPage()),
+                    );
+                  },
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(vertical: 12),
+                    width: double.infinity,
+                    alignment: Alignment.center,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      border: Border.all(color: Colors.black),
+                    ),
+                    child: const Text(
+                      "Register",
+                      style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                ),
+
+                const SizedBox(height: 20),
+
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  spacing: 10,
+                  children: const [
+                    Text(
+                      "Terms of use",
+                      style: TextStyle(fontSize: 16, color: Colors.blue),
+                    ),
+                    Text("&", style: TextStyle(fontSize: 16, color: Colors.black)),
+                    Text(
+                      "Privacy Policy",
+                      style: TextStyle(fontSize: 16, color: Colors.blue),
+                    ),
+                  ],
+                ),
               ],
             ),
-            SizedBox(height: 20),
-            Text("Welcome Back", style: TextStyle(fontSize: 24)),
-            SizedBox(height: 20),
-
-            Container(
-              padding: EdgeInsets.all(16),
-              width: double.infinity,
-
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.all(Radius.circular(5)),
-                border: Border.all(color: Colors.black38),
-              ),
-              child: Text(
-                "Email",
-                style: TextStyle(fontSize: 20, color: Colors.black38),
-              ),
-            ),
-            SizedBox(height: 20),
-            Container(
-              padding: EdgeInsets.all(16),
-
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.all(Radius.circular(5)),
-                border: Border.all(color: Colors.black38),
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    "Password",
-                    style: TextStyle(fontSize: 20, color: Colors.black38),
-                  ),
-
-                  Icon(Icons.visibility),
-                ],
-              ),
-            ),
-
-            SizedBox(height: 20),
-
-            Row(
-              children: [
-                Container(
-                  height: 25,
-                  width: 25,
-                  decoration: BoxDecoration(
-                    border: Border.all(color: Colors.black, width: 2),
-                  ),
-                ),
-                SizedBox(width: 10),
-                Text("Remember me", style: TextStyle(fontSize: 16)),
-                Spacer(),
-                Text(
-                  "Forget password?",
-                  style: TextStyle(fontSize: 16, color: Colors.blue),
-                ),
-              ],
-            ),
-
-            SizedBox(height: 20),
-            GestureDetector(
-              onTap: () {
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(builder: (context) => RegisterPage()),
-                );
-              },
-              child: Container(
-                padding: EdgeInsets.symmetric(vertical: 12),
-                width: double.infinity,
-                alignment: Alignment.center,
-                decoration: BoxDecoration(
-                  color: Colors.black,
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                child: Text(
-                  "Sign In",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-            ),
-            SizedBox(height: 25),
-
-            Divider(),
-            SizedBox(height: 25),
-
-            Text(
-              "New to Verve",
-              style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold),
-            ),
-            SizedBox(height: 20),
-
-            Container(
-              padding: EdgeInsets.symmetric(vertical: 12),
-              width: double.infinity,
-              alignment: Alignment.center,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20),
-                border: Border.all(color: Colors.black),
-              ),
-              child: Text(
-                "Register",
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-              ),
-            ),
-            Spacer(),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.end,
-              spacing: 10,
-              children: [
-                Text(
-                  "Terms of use",
-                  style: TextStyle(fontSize: 16, color: Colors.blue),
-                ),
-                Text("&", style: TextStyle(fontSize: 16, color: Colors.black)),
-                Text(
-                  "Privacy Policy",
-                  style: TextStyle(fontSize: 16, color: Colors.blue),
-                ),
-              ],
-            ),
-          ],
+          ),
         ),
       ),
     );

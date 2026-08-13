@@ -1,73 +1,89 @@
 import 'package:flutter/material.dart';
+import 'package:lessons_app/data/products_data.dart';
+import 'package:lessons_app/widgets/product_card.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  final List<String> categories = ["All", "Deals", "Clothes", "Shoes"];
+  int selectedIndex = 0;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      drawer: HomeDrawer(),
+      drawer: const HomeDrawer(),
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0,
-        title: Text(
+        title: const Text(
           "Verve",
           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
         ),
-
-        actionsPadding: EdgeInsets.symmetric(horizontal: 20),
-        actions: [
+        actionsPadding: const EdgeInsets.symmetric(horizontal: 20),
+        actions: const [
           Icon(Icons.search, size: 30),
           SizedBox(width: 10),
           Icon(Icons.shopping_bag_rounded, size: 30),
         ],
       ),
       body: Padding(
-        padding: EdgeInsetsGeometry.symmetric(horizontal: 20),
+        padding: const EdgeInsets.symmetric(horizontal: 20),
         child: ListView(
           children: [
+            // ===== صف الكاتيجوريز - دلوقتي بتفلتر فعلياً عن طريق setState =====
             SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               child: Row(
                 spacing: 10,
-                children: [
-                  ChoiceChip(
-                    selected: true,
-                    onSelected: (value) {},
+                children: List.generate(categories.length, (index) {
+                  final isSelected = selectedIndex == index;
+                  return ChoiceChip(
+                    selected: isSelected,
+                    onSelected: (value) {
+                      setState(() {
+                        selectedIndex = index;
+                      });
+                    },
                     showCheckmark: false,
                     selectedColor: Colors.black,
-
-                    label: Text("All"),
-
-                    padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                    labelStyle: TextStyle(color: Colors.white),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadiusGeometry.circular(20),
-                    ),
-                  ),
-                  ChoiceChip(
-                    selected: false,
-                    onSelected: (value) {},
-                    showCheckmark: false,
-                    selectedColor: Colors.black,
-
-                    label: Text("Deal"),
                     backgroundColor: Colors.white,
-                    padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadiusGeometry.circular(20),
-                      side: BorderSide(color: Colors.black, width: 1.5),
+                    label: Text(categories[index]),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 16,
+                      vertical: 8,
                     ),
-                  ),
-                ],
+                    labelStyle: TextStyle(
+                      color: isSelected ? Colors.white : Colors.black,
+                    ),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20),
+                      side: BorderSide(
+                        color: isSelected ? Colors.black : Colors.black26,
+                      ),
+                    ),
+                  );
+                }),
               ),
             ),
-            SizedBox(height: 20),
+
+            const SizedBox(height: 20),
+
             AspectRatio(
               aspectRatio: 16 / 9,
               child: Container(
-                padding: EdgeInsets.symmetric(horizontal: 20),
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                decoration: const BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage("assets/images/home_card.png"),
+                    fit: BoxFit.cover,
+                  ),
+                ),
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
@@ -75,62 +91,98 @@ class HomePage extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
+                        const Text(
                           "Hot Drops",
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 28,
                           ),
                         ),
-                        Text(
+                        const Text(
                           "Must have Sneakers",
                           style: TextStyle(
                             fontWeight: FontWeight.w600,
                             fontSize: 18,
                           ),
                         ),
-                        SizedBox(height: 12),
+                        const SizedBox(height: 12),
                         ActionChip(
-                          label: Text("Find out"),
-                          onPressed: () {},
+                          label: const Text("Find out"),
+                          onPressed: () {
+                            // نروح لأول منتج زي عرض توضيحي لتمرير البيانات
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => Scaffold(
+                                  appBar: AppBar(title: const Text("Best Sellers")),
+                                  body: const Center(
+                                    child: Text("مرر لتحت في الهوم عشان تشوف المنتجات"),
+                                  ),
+                                ),
+                              ),
+                            );
+                          },
                           backgroundColor: Colors.black,
-                          padding: EdgeInsets.symmetric(
+                          padding: const EdgeInsets.symmetric(
                             horizontal: 12,
                             vertical: 8,
                           ),
-                          labelStyle: TextStyle(color: Colors.white),
+                          labelStyle: const TextStyle(color: Colors.white),
                           shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadiusGeometry.circular(20),
+                            borderRadius: BorderRadius.circular(20),
                           ),
                         ),
                       ],
                     ),
-                    Expanded(child: Image.asset("assets/images/shoe img.png")),
+                    Expanded(
+                      child: Image.asset("assets/images/shoe_img.png"),
+                    ),
                   ],
-                ),
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                    image: AssetImage("assets/images/home_card.png"),
-                  ),
                 ),
               ),
             ),
 
-            ElevatedButton(onPressed: () {}, child: Text("Pay")),
-            TextButton.icon(
-              onPressed: () {},
-              label: Text("Do not Have an account"),
-              icon: Icon(Icons.abc_outlined),
-            ),
-            IconButton(onPressed: () {}, icon: Icon(Icons.favorite)),
+            const SizedBox(height: 24),
 
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: const [
+                Text(
+                  "Best Sellers",
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                ),
+                Text("See all", style: TextStyle(color: Colors.indigo)),
+              ],
+            ),
+
+            const SizedBox(height: 16),
+
+            // ===== شبكة المنتجات الحقيقية - GridView.builder (سيشن 7) =====
+            GridView.builder(
+              // مهم: الـ GridView هنا جوه ListView (كلاهما scrollable)
+              // فلازم shrinkWrap + NeverScrollableScrollPhysics
+              // عشان الشاشة تعرف تحدد ارتفاع الـ GridView - دي بالظبط
+              // الغلطة الشائعة اللي اتحذرنا منها في سيشن 7
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              itemCount: products.length,
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                mainAxisSpacing: 16,
+                crossAxisSpacing: 16,
+                childAspectRatio: 0.68,
+              ),
+              itemBuilder: (context, index) {
+                return ProductCard(product: products[index]);
+              },
+            ),
+
+            const SizedBox(height: 30),
           ],
         ),
       ),
     );
   }
-
-  void test() {}
 }
 
 class HomeDrawer extends StatelessWidget {
@@ -142,26 +194,27 @@ class HomeDrawer extends StatelessWidget {
       child: Column(
         children: [
           Container(height: 200, color: Colors.deepPurpleAccent),
-
           ListTile(
             onTap: () {
-              Navigator.maybePop(context);
+              Navigator.pop(context);
               Navigator.pushNamed(context, "/profile");
             },
             splashColor: Colors.green,
-            leading: Icon(Icons.person),
-            title: Text("Profile Page"),
-            trailing: Icon(Icons.arrow_forward_rounded),
+            leading: const Icon(Icons.person),
+            title: const Text("Profile Page"),
+            trailing: const Icon(Icons.arrow_forward_rounded),
           ),
-          Divider(),
+          const Divider(),
           ListTile(
-            onTap: () {},
+            onTap: () {
+              Navigator.pop(context);
+            },
             splashColor: Colors.green,
-            leading: Icon(Icons.settings),
-            title: Text("Setting Page"),
-            trailing: Icon(Icons.arrow_forward_rounded),
+            leading: const Icon(Icons.settings),
+            title: const Text("Setting Page"),
+            trailing: const Icon(Icons.arrow_forward_rounded),
           ),
-          Divider(),
+          const Divider(),
         ],
       ),
     );
