@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'products_data.dart';
 import 'product_card.dart';
+import 'products_data.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -208,6 +208,7 @@ class HomeDrawer extends StatelessWidget {
           ListTile(
             onTap: () {
               Navigator.pop(context);
+              Navigator.pushNamed(context, "/settings");
             },
             splashColor: Colors.green,
             leading: const Icon(Icons.settings),

@@ -3,6 +3,7 @@ import 'package:lessons_app/pages/login_page.dart';
 import 'package:lessons_app/pages/profile_page.dart';
 import 'package:lessons_app/pages/home_page.dart';
 import 'package:lessons_app/pages/splash_page.dart';
+import 'package:lessons_app/pages/settings_page.dart';
 
 void main(List<String> args) {
   runApp(const VerveApp());
@@ -21,6 +22,7 @@ class VerveApp extends StatelessWidget {
         "/login": (context) => const LoginPage(),
         "/home": (context) => const HomePage(),
         "/profile": (context) => const ProfilePage(),
+        "/settings": (context) => const SettingsPage(),
       },
       onUnknownRoute: (settings) =>
           MaterialPageRoute(builder: (context) => const NotFound404()),
