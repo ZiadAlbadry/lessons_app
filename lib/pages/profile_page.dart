@@ -16,25 +16,25 @@ class ProfilePage extends StatelessWidget {
               onTap: () {},
               leading: const Icon(Icons.email),
               title: const Text("Email"),
-              subtitle: const Text("abdallhelrabiey255@gamil.com"),
+              subtitle: const Text("ziadalbadry16@gmail.com"),
             ),
             ListTile(
               onTap: () {},
               leading: const Icon(Icons.mobile_screen_share_outlined),
               title: const Text("Mobile"),
-              subtitle: const Text("01006257074"),
+              subtitle: const Text("01285964248"),
             ),
             ListTile(
               onTap: () {},
               leading: const Icon(Icons.facebook),
               title: const Text("Facebook"),
-              subtitle: const Text("abdallhelrabiey255@gamil"),
+              subtitle: const Text("ziadalbadry16@gmail.com"),
             ),
             ListTile(
               onTap: () {},
-              leading: const Icon(Icons.beach_access),
-              title: const Text("Behance"),
-              subtitle: const Text("xyz.com"),
+              leading: const Icon(Icons.camera_enhance_outlined),
+              title: const Text("Creativa"),
+              subtitle: const Text("zezoalbadry.com"),
             ),
           ],
         ),
@@ -54,7 +54,7 @@ class ProfileLeading extends StatelessWidget {
         gradient: const LinearGradient(
           begin: Alignment.topRight,
           end: Alignment.bottomLeft,
-          colors: [Colors.blueAccent, Colors.deepOrangeAccent],
+          colors: [Color.fromARGB(255, 27, 73, 152), Color.fromARGB(255, 65, 223, 131)],
         ),
         borderRadius: BorderRadius.only(
           bottomRight: Radius.circular(20),
@@ -83,12 +83,12 @@ class ProfileLeading extends StatelessWidget {
           ),
 
           const CircleAvatar(
-            backgroundColor: Colors.white,
-            radius: 50,
+            backgroundColor: Color.fromARGB(255, 220, 227, 230),
+            radius: 73,
             child: CircleAvatar(
-              radius: 48,
+              radius: 70,
               backgroundImage: NetworkImage(
-                "https://images.unsplash.com/photo-1496715976403-7e36dc43f17b?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+                "https://ziadalbadry.github.io/portfolio/img/ziadsisi.jpg"
               ),
             ),
           ),
@@ -96,7 +96,7 @@ class ProfileLeading extends StatelessWidget {
           const Column(
             children: [
               Text(
-                "Abdallh Mostafa",
+                "Ziad Albadry",
                 style: TextStyle(color: Colors.white, fontSize: 20),
               ),
               Text(
@@ -109,9 +109,9 @@ class ProfileLeading extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: const [
-              Text("1000", style: TextStyle(color: Colors.white, fontSize: 18)),
+              Text("1800", style: TextStyle(color: Colors.white, fontSize: 18)),
               SizedBox(width: 5),
-              Text("Follower", style: TextStyle(color: Colors.white, fontSize: 16)),
+              Text("Followers", style: TextStyle(color: Colors.white, fontSize: 16)),
               SizedBox(width: 10),
               SizedBox(
                 height: 40,
