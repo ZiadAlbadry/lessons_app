@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'product.dart';
-import 'package:lessons_app/pages/product_page.dart';
+import 'package:lessons_app/models/product_page.dart';
 
 // widget مستخرج (Extracted Widget) - اتعلمناه في سيشن 7
 // بدل ما نكرر كارت المنتج كل مرة، عملناه هنا مرة واحدة ونستدعيه من الـ GridView

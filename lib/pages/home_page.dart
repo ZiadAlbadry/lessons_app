@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'product_card.dart';
-import 'products_data.dart';
+import '../models/product_card.dart';
+import '../models/products_data.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -16,17 +16,6 @@ class _HomePageState extends State<HomePage> {
   "Clothes",
   "Shoes",
   "Best seller",
-  "pants",
-  "pants",
-  "pants",
-  "pants",
-  "pants",
-  "pants",
-  "pants",
-  "pants",
-  "pants",
-  "pants",
-  "pants",
   "pants",
   "pants",
      ];

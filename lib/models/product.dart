@@ -1,4 +1,3 @@
-// موديل بيانات المنتج - اتعلمناه في سيشن 7 (Typed UI Model)
 class Product {
   final int id;
   final String name;
