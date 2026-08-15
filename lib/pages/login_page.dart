@@ -86,7 +86,7 @@ class _LoginPageState extends State<LoginPage> {
                     if (value == null || value.isEmpty) {
                       return "pls enter your email";
                     }
-                    if (!value.contains("@")) {
+                    if (!value.contains("@gmail.com")) {
                       return "صيغة الإيميل غلط";
                     }
                     return null;
@@ -125,9 +125,7 @@ class _LoginPageState extends State<LoginPage> {
                     return null;
                   },
                 ),
-
                 const SizedBox(height: 12),
-
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [

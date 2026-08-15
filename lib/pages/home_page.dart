@@ -10,7 +10,26 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final List<String> categories = ["All", "Deals", "Clothes", "Shoes","Best seller"];
+  final List<String> categories = [
+  "All",
+  "Deals",
+  "Clothes",
+  "Shoes",
+  "Best seller",
+  "pants",
+  "pants",
+  "pants",
+  "pants",
+  "pants",
+  "pants",
+  "pants",
+  "pants",
+  "pants",
+  "pants",
+  "pants",
+  "pants",
+  "pants",
+     ];
   int selectedIndex = 0;
 
   @override
@@ -144,9 +163,10 @@ class _HomePageState extends State<HomePage> {
 
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: const [
+              children: [
                 Text(
                   "Best Sellers",
+
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                 ),
                 Text("See all", style: TextStyle(color: Colors.indigo)),

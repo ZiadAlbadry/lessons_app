@@ -108,7 +108,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   ),
                   validator: (value) {
                     if (value == null || value.isEmpty) return "اكتب الإيميل";
-                    if (!value.contains("@")) return "صيغة الإيميل غلط";
+                    if (!value.contains("@gmail.com")) return "صيغة الإيميل غلط";
                     return null;
                   },
                 ),

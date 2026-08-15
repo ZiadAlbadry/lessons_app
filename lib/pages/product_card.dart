@@ -66,7 +66,6 @@ class _ProductCardState extends State<ProductCard> {
                   ),
                 ),
 
-              // أيقونة القلب - AnimatedContainer بتغيّر لونها بسلاسة عند الضغط (سيشن 8)
               Positioned(
                 top: 8,
                 right: 8,
