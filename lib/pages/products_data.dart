@@ -1,7 +1,5 @@
 import 'product.dart';
 
-// استخدمت الصورتين المتاحين عندك دلوقتي (home_card.png, shoe_img.png)
-// كل ما تضيف صور منتجات حقيقية في assets/images غيّر الـ imagePath هنا
 final List<Product> products = [
   const Product(
     id: 1,

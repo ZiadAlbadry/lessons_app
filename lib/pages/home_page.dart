@@ -10,7 +10,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final List<String> categories = ["All", "Deals", "Clothes", "Shoes"];
+  final List<String> categories = ["All", "Deals", "Clothes", "Shoes","Best seller"];
   int selectedIndex = 0;
 
   @override
@@ -36,7 +36,6 @@ class _HomePageState extends State<HomePage> {
         padding: const EdgeInsets.symmetric(horizontal: 20),
         child: ListView(
           children: [
-            // ===== صف الكاتيجوريز - دلوقتي بتفلتر فعلياً عن طريق setState =====
             SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               child: Row(
@@ -109,7 +108,6 @@ class _HomePageState extends State<HomePage> {
                         ActionChip(
                           label: const Text("Find out"),
                           onPressed: () {
-                            // نروح لأول منتج زي عرض توضيحي لتمرير البيانات
                             Navigator.push(
                               context,
                               MaterialPageRoute(
@@ -157,12 +155,7 @@ class _HomePageState extends State<HomePage> {
 
             const SizedBox(height: 16),
 
-            // ===== شبكة المنتجات الحقيقية - GridView.builder (سيشن 7) =====
             GridView.builder(
-              // مهم: الـ GridView هنا جوه ListView (كلاهما scrollable)
-              // فلازم shrinkWrap + NeverScrollableScrollPhysics
-              // عشان الشاشة تعرف تحدد ارتفاع الـ GridView - دي بالظبط
-              // الغلطة الشائعة اللي اتحذرنا منها في سيشن 7
               shrinkWrap: true,
               physics: const NeverScrollableScrollPhysics(),
               itemCount: products.length,

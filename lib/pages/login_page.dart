@@ -26,14 +26,12 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   void dispose() {
-    // تقفيل الـ controllers لما الصفحة تتقفل - سيشن 8
     emailController.dispose();
     passwordController.dispose();
     super.dispose();
   }
 
   void handleSignIn() {
-    // بيتحقق من كل TextFormField جوه الـ Form
     if (_formKey.currentState!.validate()) {
       Navigator.pushReplacementNamed(context, "/home");
     }
@@ -76,7 +74,7 @@ class _LoginPageState extends State<LoginPage> {
                 const Text("Welcome Back", style: TextStyle(fontSize: 24)),
                 const SizedBox(height: 20),
 
-                // ===== حقل الإيميل =====
+                // ===== الإيميل =====
                 TextFormField(
                   controller: emailController,
                   keyboardType: TextInputType.emailAddress,
@@ -86,7 +84,7 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                   validator: (value) {
                     if (value == null || value.isEmpty) {
-                      return "من فضلك اكتب الإيميل";
+                      return "pls enter your email";
                     }
                     if (!value.contains("@")) {
                       return "صيغة الإيميل غلط";
@@ -97,7 +95,7 @@ class _LoginPageState extends State<LoginPage> {
 
                 const SizedBox(height: 16),
 
-                // ===== حقل الباسورد =====
+                // ===== الباسورد =====
                 TextFormField(
                   controller: passwordController,
                   obscureText: !isPasswordVisible,
@@ -121,8 +119,8 @@ class _LoginPageState extends State<LoginPage> {
                     if (value == null || value.isEmpty) {
                       return "من فضلك اكتب كلمة المرور";
                     }
-                    if (value.length < 6) {
-                      return "كلمة المرور لازم تكون 6 حروف على الأقل";
+                    if (value.length <= 8) {
+                      return "كلمة المرور لازم تكون 8 حروف على الأقل";
                     }
                     return null;
                   },
