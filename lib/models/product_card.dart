@@ -33,14 +33,38 @@ class _ProductCardState extends State<ProductCard> {
           Stack(
             children: [
               ClipRRect(
-                borderRadius: BorderRadius.circular(12),
-                child: Image.asset(
-                  product.imagePath,
-                  height: 140,
-                  width: double.infinity,
-                  fit: BoxFit.cover,
-                ),
-              ),
+  borderRadius: BorderRadius.circular(12),
+  child: Image.network(
+    product.imagePath,
+    height: 250,
+    width: double.infinity,
+    fit: BoxFit.cover,
+    loadingBuilder: (context, child, loadingProgress) {
+      if (loadingProgress == null) return child;
+
+      return const SizedBox(
+        height: 250,
+        width: double.infinity,
+        child: Center(
+          child: CircularProgressIndicator(),
+        ),
+      );
+    },
+    errorBuilder: (context, error, stackTrace) {
+      return const SizedBox(
+        height: 250,
+        width: double.infinity,
+        child: Center(
+          child: Icon(
+            Icons.image_not_supported,
+            size: 50,
+            color: Colors.grey,
+          ),
+        ),
+      );
+    },
+  ),
+),
 
               if (product.discountLabel != null)
                 Positioned(
@@ -68,7 +92,7 @@ class _ProductCardState extends State<ProductCard> {
 
               Positioned(
                 top: 8,
-                right: 8,
+                right: 6,
                 child: GestureDetector(
                   onTap: () {
                     setState(() {
@@ -84,7 +108,7 @@ class _ProductCardState extends State<ProductCard> {
                     ),
                     child: Icon(
                       isFavorite ? Icons.favorite : Icons.favorite_border,
-                      size: 16,
+                      size: 20,
                       color: isFavorite ? Colors.white : Colors.black,
                     ),
                   ),
@@ -99,7 +123,7 @@ class _ProductCardState extends State<ProductCard> {
             product.name,
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
-            style: const TextStyle(fontWeight: FontWeight.w600),
+            style: const TextStyle(fontWeight: FontWeight.bold),
           ),
 
           const SizedBox(height: 4),

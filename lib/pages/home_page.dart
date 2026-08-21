@@ -13,11 +13,16 @@ class _HomePageState extends State<HomePage> {
   final List<String> categories = [
   "All",
   "Deals",
-  "Clothes",
+  "Men",
+  "Women",
   "Shoes",
-  "Best seller",
-  "pants",
-  "pants",
+  "Accessories",
+  "Electronics",
+  "Home",
+  "Beauty",
+  "Sports",
+  "Best Sellers",
+
      ];
   int selectedIndex = 0;
 

@@ -1,5 +1,7 @@
 import 'dart:developer';
 import 'package:flutter/material.dart';
+import 'package:lessons_app/pages/login_page.dart';
+
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({super.key});
@@ -43,7 +45,7 @@ class _RegisterPageState extends State<RegisterPage> {
   void handleRegister() {
     if (_formKey.currentState!.validate()) {
       log("Registering: ${firstNameController.text} ${lastNameController.text}");
-      Navigator.pushReplacementNamed(context, "/home");
+      Navigator.pushReplacementNamed(context, "/login");
     }
   }
 

@@ -158,7 +158,7 @@ class _LoginPageState extends State<LoginPage> {
                     width: double.infinity,
                     alignment: Alignment.center,
                     decoration: BoxDecoration(
-                      color: Colors.black,
+                      color: const Color.fromARGB(255, 16, 45, 233),
                       borderRadius: BorderRadius.circular(20),
                     ),
                     child: const Text(
